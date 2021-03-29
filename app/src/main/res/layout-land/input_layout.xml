@@ -11,22 +11,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autofillHints="false"
-        android:background="#07000000"
         android:gravity="end"
         android:inputType="none"
         android:padding="10dp"
         android:text="@string/enter_the_value"
         android:textAlignment="textEnd"
-        android:textSize="30sp"
+        android:textSize="@dimen/tvInputTextSize"
         tools:ignore="LabelFor" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvOutput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#07000000"
         android:gravity="end"
         android:padding="10dp"
-        android:textSize="60sp" />
+        android:textSize="@dimen/tvOutputTextSize" />
 
 </LinearLayout>

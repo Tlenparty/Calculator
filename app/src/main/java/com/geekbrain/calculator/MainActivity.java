@@ -1,29 +1,41 @@
 package com.geekbrain.calculator;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
+
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.text.SpannableStringBuilder;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.switchmaterial.SwitchMaterial;
+
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.Scriptable;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
-
-    /**
-     * 1. Напишите обработку каждой кнопки из макета калькулятора.+
-     * 2. Создайте объект с данными и операциями калькулятора.+
-     * Продумайте, каким образом будете хранить введённые пользователем данные.
-     * 3. * Создайте макет калькулятора для горизонтальной ориентации экрана и
-     * отображайте его в ландшафтной ориентации.
-     **/
+public class MainActivity extends AppCompatActivity implements Serializable {
+    /*
+    1. Переделайте все кнопки на Материал.+
+    2. Все размеры и строки сделайте ресурсами. +
+    3. Создайте стиль для своего приложения. +
+    4. * Создайте светлую и тёмную тему для приложения.
+    */
+    //
 
     TextView tvOutput;
     EditText tvInput;
     String process;
+    SwitchMaterial switchModeBtn;
+    String resultInfoKey = "resultInfoKey";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +43,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         showMessage("onCreate");
 
-        tvInput = findViewById(R.id.tvInput);
-        tvOutput = findViewById(R.id.tvOutput);
+        initViews();
+
+
         tvInput.setShowSoftInputOnFocus(false);
 
         tvInput.setOnClickListener(new View.OnClickListener() {
@@ -44,7 +57,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        switchModeBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                } else {
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                }
+            }
+        });
+
+
     }
+
+    private void initViews() {
+        tvInput = findViewById(R.id.tvInput);
+        tvOutput = findViewById(R.id.tvOutput);
+        switchModeBtn = findViewById(R.id.switchModeBtn);
+    }
+
 
     private void updateText(String strToAdd) {
         String oldStr = tvInput.getText().toString();
@@ -206,12 +238,30 @@ public class MainActivity extends AppCompatActivity {
         tvOutput.setText(finalResult);
     }
 
+    // Для сохранения значения при повороте экрана
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        // outState - просто контейнер в который можно что-то положить. Необходиомсть моетить поле как Serializable
+        process = tvOutput.getText().toString();
+        outState.putSerializable(resultInfoKey, process);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        // Каст по классу TextView. Каст значения, которое мы забрали
+        process = (String) savedInstanceState.getSerializable(resultInfoKey);
+        tvOutput.setText(process);
+    }
+
     public void plusMinusBTN(View view) {
         updateText("±");
     }
 
     public void clearBTN(View view) {
         tvInput.setText("");
+        tvOutput.setText("");
     }
 
     public void parenthesesBNT(View view) {
@@ -237,7 +287,7 @@ public class MainActivity extends AppCompatActivity {
         tvInput.setSelection(cursorPos + 1);
     }
 
-    public void saveDataInArray(String process){
+    public void saveDataInArray(String process) {
         ArrayList<String> dataFromTvInput = new ArrayList<>();
         dataFromTvInput.add(process);
     }

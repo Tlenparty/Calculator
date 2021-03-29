@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MyCoolStyle" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:background">@color/background</item>
+        <item name="android:backgroundTint">@color/background</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="cornerRadius">20dp</item>
+        <item name="android:shape">rectangle</item>
+        <item name="android:state_pressed">true</item>
+    </style>
+</resources>
