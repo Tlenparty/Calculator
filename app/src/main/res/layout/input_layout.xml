@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:theme="@style/MyCoolStyle">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/tvInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints="false"
+        android:background="#07000000"
+        android:gravity="end"
+        android:inputType="none"
+        android:padding="10dp"
+        android:text="@string/enter_the_value"
+        android:textAlignment="textEnd"
+        android:textSize="30sp"
+        tools:ignore="LabelFor" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvOutput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#07000000"
+        android:gravity="end"
+        android:padding="10dp"
+        android:textSize="60sp" />
+
+</LinearLayout>
