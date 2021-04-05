@@ -20,7 +20,10 @@
     <string name="dot">.</string>
     <string name="equally">=</string>
     <string name="division">÷</string>
-    <string name="backspace"><![CDATA[<]]></string>
+    <string name="backspace"><![CDATA[<<]]></string>
     <string name="enter_the_value">Enter the value</string>
     <string name="result">result</string>
+    <string name="settings">settings</string>
+    <string name="night_mode_settings">Ночной режим</string>
+    <string name="settings_title">НАСТРОЙКИ</string>
 </resources>
