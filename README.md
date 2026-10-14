@@ -1,38 +1,38 @@
 # Calculator
 
-Калькулятор для Android на Java. Выражение вводится целиком (со скобками
-и процентами) и вычисляется собственным парсером: перевод в обратную польскую
-запись и вычисление на стеке.
+An Android calculator written in Java. The whole expression is entered at once (with
+parentheses and percentages) and evaluated by a custom parser: conversion to reverse
+Polish notation followed by stack-based evaluation.
 
-## Возможности
+## Features
 
-- Сложение, вычитание, умножение, деление, проценты, скобки, смена знака
-- Редактирование выражения: перемещение курсора, удаление символа, очистка
-- Вычисление через обратную польскую запись (без сторонних движков)
-- Сохранение результата при повороте экрана, отдельная альбомная разметка
-- Экран настроек с переключением светлой/тёмной темы (DayNight)
+- Addition, subtraction, multiplication, division, percentages, parentheses, sign change
+- Expression editing: cursor movement, deleting a character, clearing
+- Evaluation via reverse Polish notation (no third-party engines)
+- The result is preserved on screen rotation; a separate landscape layout
+- A settings screen with a light/dark theme switch (DayNight)
 
-## Стек
+## Tech stack
 
-| Область  | Технологии                                  |
+| Area     | Technologies                                |
 |----------|---------------------------------------------|
-| Язык     | Java 8                                      |
+| Language | Java 8                                      |
 | UI       | Activity, ConstraintLayout, Material Components |
-| Сборка   | Gradle 7.3.3, Android Gradle Plugin 7.0.4   |
+| Build    | Gradle 7.3.3, Android Gradle Plugin 7.0.4   |
 
-## Структура
+## Project structure
 
 ```
 app/src/main/java/com/tlenparty/calculator/
-├── MainActivity.java     # клавиатура, разбор и вычисление выражения
-├── Choose_theme.java     # настройки: выбор темы
-├── CalculatorLogic.java  # состояние дисплея для сохранения при повороте
-└── Actions.java          # перечисление операций
+├── MainActivity.java     # keypad, expression parsing and evaluation
+├── Choose_theme.java     # settings: theme selection
+├── CalculatorLogic.java  # display state preserved across rotation
+└── Actions.java          # enumeration of operations
 ```
 
-## Сборка
+## Build
 
-Требуется JDK 11–17 и Android SDK 30.
+Requires JDK 11–17 and Android SDK 30.
 
 ```bash
 ./gradlew assembleDebug
