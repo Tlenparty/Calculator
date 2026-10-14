@@ -1,4 +1,4 @@
-package com.geekbrain.calculator;
+package com.tlenparty.calculator;
 
 public enum Actions {
     PLUS("+"),

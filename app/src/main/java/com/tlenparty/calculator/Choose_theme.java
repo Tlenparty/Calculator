@@ -1,4 +1,4 @@
-package com.geekbrain.calculator;
+package com.tlenparty.calculator;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
